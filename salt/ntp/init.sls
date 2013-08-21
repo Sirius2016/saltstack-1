@@ -1,7 +1,8 @@
-nginx:
+ntp:
   pkg:
     - installed
-  service:
+
+service:
     - running
     - require:
-      - pkg: nginx
+      - pkg: ntp
