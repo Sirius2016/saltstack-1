@@ -2,7 +2,13 @@ ntp:
   pkg:
     - installed
 
-service:
+  service:
+    {% if grains['os'] == 'CentOS' or grains['os'] == 'RedHat' %}
+    - name: ntpd
+    {% endif %}
     - running
-    - require:
-      - pkg: ntp
+    - enable: True
+  watch:
+    - file: /etc/ntp.conf
+  require:
+    - pkg: ntp

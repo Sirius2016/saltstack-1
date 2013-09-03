@@ -10,4 +10,5 @@ apache:
     - installed
   service:
     - name: httpd
+    - enable: True
     - running
